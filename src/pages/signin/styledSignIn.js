@@ -4,6 +4,7 @@ import bgImgUrl from "../.././assets/images/cover_signin.jpg";
 export const Container = styled.div`
   height: 100vh;
   width: 100vw;
+  overflow: hidden;
   background-color: ${(props) => props.theme.color.whiteDark};
   background: url(${bgImgUrl});
   background-size: 100%;
@@ -15,7 +16,7 @@ export const Frame = styled.div`
   padding: 5rem 3rem;
   background-color: ${(props) => props.theme.color.white};
   margin: auto;
-  margin-top:20vh;
+  margin-top: 20vh;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -54,6 +55,7 @@ export const Form = styled.form`
   display: flex;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
 `;
 export const ErrorMessage = styled.div`
   color: ${(props) => props.theme.color.text.warning};
@@ -61,5 +63,6 @@ export const ErrorMessage = styled.div`
   background-color: ${(props) => props.theme.color.whiteDark};
   padding: 1rem;
   border-radius: 0.5rem;
+  width: 100%;
   text-align: center;
 `;

@@ -18,6 +18,8 @@ import { signUpUser } from "../../contexts/user/userActions";
 import { useUser } from "../../contexts/user/userContext";
 import BounceLoader from "react-spinners/BounceLoader";
 import Footer from "../../components/footer/footer";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 
 const StyledLink = styled(Link)`
   color: #0078bd;
@@ -27,21 +29,27 @@ export default function SignUp() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const email = useInput("");
-  const password = useInput("");
-
   const { dispatch } = useUser();
   const navigateTo = useNavigate();
 
-  const submitForm = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    // check if email and password is not empty
-    if (email.value && password.value) {
-      // create userObj
-      let userObj = { email: email.value, password: password.value };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("invalid `email` address !")
+        .required("`Email` is required !"),
+      password: Yup.string()
+        .required("`Password` is required !")
+        .min(8, "`Password` is too short - should be 8 chars minimum !"),
+    }),
+    onSubmit: async (values) => {
+      setLoading(true);
+
       try {
-        let response = await signUpUser(userObj);
+        let response = await signUpUser(values);
         if (response.status === "success") {
           let { user } = response.data;
           let token = response.token;
@@ -49,7 +57,7 @@ export default function SignUp() {
           localStorage.setItem("real_state-user", JSON.stringify(user));
           localStorage.setItem("real_state-token", token);
           // Dispatch an action
-          dispatch({ type: "SIGN_UP", payload: user });
+          dispatch({ type: "SIGN_IN", payload: user });
           setError("");
           setTimeout(() => {
             setLoading(false);
@@ -60,11 +68,8 @@ export default function SignUp() {
         setLoading(false);
         setError("Something went wrong when signing up. Please try again !");
       }
-    } else {
-      setLoading(false);
-      setError("You haven't provided email or password.");
-    }
-  };
+    },
+  });
 
   return (
     <Container>
@@ -73,22 +78,26 @@ export default function SignUp() {
           <Logo />
         </LogoWrapper>
         <Heading>Create account</Heading>
-        <Form>
+        <Form onSubmit={formik.handleSubmit}>
           <FormInput
-            style={{ marginBottom: "2rem" }}
             type="email"
+            required
             placeholder="Email address"
-            {...email}
+            {...formik.getFieldProps("email")}
           />
+          {formik.touched.email && formik.errors.email ? (
+            <ErrorMessage>{formik.errors.email}</ErrorMessage>
+          ) : null}
           <FormInput
-            style={{ marginBottom: "2rem" }}
             type="password"
             placeholder="Passwrod"
-            {...password}
+            required
+            {...formik.getFieldProps("password")}
           />
-          <Button style={{ marginBottom: "2rem" }} onClick={submitForm}>
-            Create account
-          </Button>
+          {formik.touched.password && formik.errors.password ? (
+            <ErrorMessage>{formik.errors.password}</ErrorMessage>
+          ) : null}
+          <Button style={{ marginBottom: "2rem" }}>Create Account</Button>
           <BounceLoader color={"#0078bd"} loading={loading} size={40} />
           {error && <ErrorMessage>{error}</ErrorMessage>}
         </Form>
@@ -97,7 +106,7 @@ export default function SignUp() {
           <StyledLink to={"/auth/signin"}>Sign in</StyledLink>
         </Text>
       </Frame>
-      <Footer/>
+      <Footer />
     </Container>
   );
 }

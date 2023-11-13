@@ -49,6 +49,7 @@ const Button = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   margin-top: 0.5rem;
+  cursor: pointer;
 `;
 const LinkButton = styled(Link)`
   color: var(--blue);

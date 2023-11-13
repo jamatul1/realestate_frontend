@@ -18,6 +18,8 @@ import { signInUser } from "../../contexts/user/userActions";
 import { useUser } from "../../contexts/user/userContext";
 import BounceLoader from "react-spinners/BounceLoader";
 import Footer from "../../components/footer/footer";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const StyledLink = styled(Link)`
   color: #0078bd;
@@ -27,21 +29,27 @@ export default function SignIn() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const email = useInput("");
-  const password = useInput("");
-
   const { dispatch } = useUser();
   const navigateTo = useNavigate();
 
-  const submitForm = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    // check if email and password is not empty
-    if (email.value && password.value) {
-      // create userObj
-      let userObj = { email: email.value, password: password.value };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("invalid `email` address")
+        .required("`Email` is required !"),
+      password: Yup.string()
+        .required("`Password` is required !")
+        .min(8, "`Password` is too short - should be 8 chars minimum !"),
+    }),
+    onSubmit: async (values) => {
+      setLoading(true);
+
       try {
-        let response = await signInUser(userObj);
+        let response = await signInUser(values);
         if (response.status === "success") {
           let { user } = response.data;
           let token = response.token;
@@ -60,11 +68,8 @@ export default function SignIn() {
         setLoading(false);
         setError("Something went wrong when signing up. Please try again !");
       }
-    } else {
-      setLoading(false);
-      setError("You haven't provided email or password.");
-    }
-  };
+    },
+  });
 
   return (
     <Container>
@@ -73,22 +78,26 @@ export default function SignIn() {
           <Logo />
         </LogoWrapper>
         <Heading>Sign in</Heading>
-        <Form>
+        <Form onSubmit={formik.handleSubmit}>
           <FormInput
-            style={{ marginBottom: "2rem" }}
             type="email"
+            required
             placeholder="Email address"
-            {...email}
+            {...formik.getFieldProps("email")}
           />
+          {formik.touched.email && formik.errors.email ? (
+            <ErrorMessage>{formik.errors.email}</ErrorMessage>
+          ) : null}
           <FormInput
-            style={{ marginBottom: "2rem" }}
             type="password"
             placeholder="Passwrod"
-            {...password}
+            required
+            {...formik.getFieldProps("password")}
           />
-          <Button style={{ marginBottom: "2rem" }} onClick={submitForm}>
-            Sign in
-          </Button>
+          {formik.touched.password && formik.errors.password ? (
+            <ErrorMessage>{formik.errors.password}</ErrorMessage>
+          ) : null}
+          <Button style={{ marginBottom: "2rem" }}>Sign in</Button>
           <BounceLoader color={"#0078bd"} loading={loading} size={40} />
           {error && <ErrorMessage>{error}</ErrorMessage>}
         </Form>
@@ -97,7 +106,7 @@ export default function SignIn() {
           <StyledLink to={"/auth/signup"}>Create an acccount</StyledLink>
         </Text>
       </Frame>
-      <Footer/>
+      <Footer />
     </Container>
   );
 }

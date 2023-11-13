@@ -70,9 +70,11 @@ const InputLabel = styled.label`
   font-weight: bold;
   color: var(--grayDark);
   margin: 1rem 0;
+  cursor: pointer;
 `;
 const CheckBox = styled.input`
   margin-right: 0.5rem;
+  cursor: pointer;
 `;
 const Select = styled.select`
   padding: 1.5rem 2rem;
@@ -85,6 +87,7 @@ const Select = styled.select`
 `;
 const Option = styled.option``;
 const Input = styled.input`
+cursor: pointer;
   border: none;
   border: 1px solid var(--grayDark);
   font-size: 1.6rem;
@@ -119,6 +122,7 @@ const InputWrapper = styled.div`
 const SmallLabel = styled.label`
   color: var(--grayDark);
   margin-right: 1rem;
+  cursor: pointer;
 `;
 const CrossButton = styled.button`
   border: none;
