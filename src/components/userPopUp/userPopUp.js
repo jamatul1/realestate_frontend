@@ -34,6 +34,7 @@ const Avatar = styled.img`
   width: 10rem;
   height: 10rem;
   border-radius: 100%;
+  object-fit: cover;
 `;
 const Title = styled.h3``;
 const SubTitle = styled.h5``;
@@ -81,7 +82,7 @@ export default function UserPopUp({ setUserPopUp }) {
 
   return (
     <Container ref={popUpRef}>
-      <Avatar src={url + user.photo} alt="user-avatar" />
+      <Avatar src={user.photo} alt="user-avatar" />
       <Title>{user.name}</Title>
       <GrayText>Role : {user.role}</GrayText>
       {user.role === "agent" && (

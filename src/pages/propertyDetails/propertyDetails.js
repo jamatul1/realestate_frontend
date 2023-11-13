@@ -342,7 +342,7 @@ export default function PropertyDetails() {
                         setShowImgPreview(true);
                         setImgIndex(0);
                       }}
-                      src={url + property.images[0]}
+                      src={property.images[0]}
                       alt="PropertyImage"
                     />
                   )}
@@ -353,7 +353,7 @@ export default function PropertyDetails() {
                           setShowImgPreview(true);
                           setImgIndex(1);
                         }}
-                        src={url + property.images[1]}
+                        src={property.images[1]}
                         alt="PropertyImage"
                       />
                     )}
@@ -363,7 +363,7 @@ export default function PropertyDetails() {
                           setShowImgPreview(true);
                           setImgIndex(2);
                         }}
-                        src={url + property.images[2]}
+                        src={property.images[2]}
                         alt="PropertyImage"
                       />
                     )}
@@ -378,10 +378,7 @@ export default function PropertyDetails() {
                           <ImageText>{property.images.length - 4}+</ImageText>
                         )}
 
-                        <Image
-                          src={url + property.images[3]}
-                          alt="PropertyImage"
-                        />
+                        <Image src={property.images[3]} alt="PropertyImage" />
                       </ImageBox>
                     )}
                   </ImageWrapper>
@@ -400,7 +397,7 @@ export default function PropertyDetails() {
             <MapWrapper>
               <PropertyMap
                 height={400}
-                zoom={16}
+                zoom={12}
                 long={property.location.coordinates[0]}
                 lat={property.location.coordinates[1]}
               />

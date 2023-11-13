@@ -9,7 +9,7 @@ const Container = styled.div`
   cursor: pointer;
   border: 2px solid transparent;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 0.5rem;
   position: relative;
 `;
 const Icon = styled.img`
@@ -24,7 +24,7 @@ const Image = styled.img`
   width: 100%;
   height: 18rem;
   object-fit: cover;
-  border-radius: 1rem;
+  border-radius: 0.2rem;
 `;
 const Heading = styled.h2`
   font-size: 2rem;
@@ -86,7 +86,7 @@ export default function ProductCard({ product, agent }) {
         </EditButton>
       )}
 
-      <Image src={url + product.images[0]} />
+      <Image src={product.images[0]} />
       <Heading>{product.name}</Heading>
       <Text>{product.location.address}</Text>
       <Price>

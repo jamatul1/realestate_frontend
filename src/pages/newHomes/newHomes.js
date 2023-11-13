@@ -27,7 +27,7 @@ export default function NewHomes({ title = "Fresh Homes For You -" }) {
   let [currentPage, setCurrentPage] = useState(1);
   let [pageItemsSize, setPageItemsSize] = useState(6);
   let [filterProp, setFilterProp] = useState({ propertyTypes: "all" });
-  let [sortProp, setSortProp] = useState({ field: "", order: "asc" });
+  let [sortProp, setSortProp] = useState({ field: "none", order: "asc" });
 
   // For the animation of the changed page after clicked on the pagination button
   let productsRef = useRef();

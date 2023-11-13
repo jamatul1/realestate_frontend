@@ -44,7 +44,7 @@ export const Heading = styled.h1`
 export const ProductsWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(25rem, 30rem));
-  gap: 2rem;
+  gap: 0.5rem;
 
   margin: auto;
   padding: 2rem 10rem;

@@ -141,7 +141,7 @@ export default function ProfileUpdate() {
           </Text>
           <Form>
             <Label htmlFor="avatar-input">
-              <Avatar src={image ? image : url + user.photo} alt="" />
+              <Avatar src={image ? image : user.photo} alt="" />
               <UploadIcon src={uploadUrl} alt="Upload" />
               <FileInput
                 onChange={onChangeFile}

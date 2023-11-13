@@ -43,7 +43,7 @@ export default function Profile() {
       <Frame>
         <Heading>Account Overview</Heading>
         <Pan tight>
-          <Avatar src={url + user.photo} alt="" />
+          <Avatar src={user.photo} alt="" />
           <Item>
             <ItemLabel>Username </ItemLabel>
             <ItemDetails>

@@ -1,5 +1,5 @@
 export default function sortItems(field, order, items) {
-  if (!field) return items;
+  if (!field || field == "none") return items;
 
   let sorted = items.sort((a, b) => {
     if (order === "asc") return Number(a[field]) - Number(b[field]);

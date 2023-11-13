@@ -30,9 +30,9 @@ export default function Sort({ setSortProp }) {
     <SortWrapper>
       <Label htmlFor="sort">Sort by :</Label>
       <Select id="sort" onChange={onChangeSelect} type="select">
-        <Option value=""></Option>
-        <Option value="price">Price</Option>
-        <Option value="beds">Beds</Option>
+        <Option value="none">none</Option>
+        <Option value="price">price</Option>
+        <Option value="beds">beds</Option>
       </Select>
       <Select onChange={onChangeSelect} id="sort-type" type="select">
         <Option value="asc">asc</Option>

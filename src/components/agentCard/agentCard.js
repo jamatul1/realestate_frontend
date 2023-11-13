@@ -4,17 +4,17 @@ import { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 const Container = styled.div`
-  width: 23rem;
+  width: 20rem;
   height: 25rem;
   border: 0.1rem solid ${(props) => props.theme.color.whiteDark};
   background: #fff;
-  border-radius: 2rem;
+  border-radius: 0.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
 `;
 const Avatar = styled.img`
   height: 8rem;
@@ -32,8 +32,7 @@ const Top = styled.div`
   gap: 1rem;
 `;
 const Button = styled.button`
-  background-color: ${(props) =>
-    props.phone ? "#ffffff" : props.theme.color.brand};
+  background-color: ${(props) => (props.phone ? "#ffffff" : "#00e489")};
   color: ${(props) => (props.phone ? "var(--green)" : "#ffffff")};
   font-weight: 500;
   cursor: pointer;
@@ -74,9 +73,9 @@ export default function AgentCard({ agent }) {
         pauseOnHover
       />
       <Top>
-        <Avatar src={url + agent.photo} alt="agent-photo"></Avatar>
-        <Title>{agent.name}</Title>
+        <Avatar src={agent.photo} alt="agent-photo"></Avatar>
       </Top>
+      <Title>{agent.name}</Title>
       <Text>{agent.address}</Text>
       <Button
         phone={showPhone ? true : false}

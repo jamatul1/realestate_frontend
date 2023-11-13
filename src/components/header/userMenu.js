@@ -68,7 +68,7 @@ export default function UserMenu() {
               setShowUserPopUp((val) => !val);
             }}
           >
-            <img src={url + user?.photo} alt="user-avatar" />
+            <img src={user?.photo} alt="user-avatar" />
           </UserAvatar>
           {showUserPopUp && <UserPopUp setUserPopUp={setShowUserPopUp} />}
         </>

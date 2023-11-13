@@ -191,7 +191,7 @@ export default function UpdateProperty() {
     property.features = features;
 
     // build the location
-    let location = { coordinates: [],type:'Point' };
+    let location = { coordinates: [], type: "Point" };
     if (address.value) {
       location.address = address.value;
     } else {
@@ -303,7 +303,7 @@ export default function UpdateProperty() {
     }
     let tempImages = [];
     for (let i = 0; i < property.images.length; i++) {
-      let path = url + property.images[i];
+      let path = property.images[i];
       tempImages.push(path);
     }
     setImages(tempImages);

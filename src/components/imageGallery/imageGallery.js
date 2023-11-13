@@ -14,14 +14,14 @@ const Image = styled.img`
   width: 100%;
 `;
 const Button = styled.button`
-  font-size: 15rem;
+  font-size: 12rem;
   color: var(--gray);
   background: transparent;
   border: none;
   font-weight: 300;
   cursor: pointer;
   @media (max-width: 800px) {
-    font-size: 10rem;
+    font-size: 9rem;
   }
 `;
 const ExitButton = styled.button`
@@ -80,7 +80,7 @@ export default function ImageGallery({ start = 0, images, setShowImgPreview }) {
       <ExitButton onClick={() => setShowImgPreview(false)}>╳</ExitButton>
       <ContentWrapper>
         <Button onClick={() => handleButtons("prev")}>{"<"}</Button>
-        <Image src={url + images[index]} alt="imgs" />
+        <Image src={images[index]} alt="imgs" />
         <Button onClick={() => handleButtons("next")}>{">"}</Button>
       </ContentWrapper>
     </Container>

@@ -6,7 +6,7 @@ const Container = styled.div`
   height: 7rem;
   width: 100%;
   padding: 2rem 10rem;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   // margin-top: 6rem;
   display: flex;
