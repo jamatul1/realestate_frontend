@@ -6,15 +6,16 @@ import { useMediaQuery } from "react-responsive";
 
 const Container = styled.div``;
 const List = styled.ul`
-display:flex;
-gap:15px;
-list-style:none;`;
+  display: flex;
+  gap: 15px;
+  list-style: none;
+`;
 const ListItem = styled.li`
   list-style: none;
 `;
 const ListLink = styled(Link)`
   text-decoration: none;
-  font-size:1.8rem;
+  font-size: 1.6rem;
   color: ${(props) => props.theme.color.grayDark};
   font-weight: 500;
   padding: 0.5rem;
@@ -37,13 +38,11 @@ export default function Nav() {
       ) : (
         <Container>
           <List>
-            
-              <ListLink to="/buy">Buy</ListLink>
-              <ListLink to="/rent">Rent</ListLink>
-              <ListLink to="/explores">Explores </ListLink>
-              <ListLink to="/newHomes">New Homes</ListLink>
-              <ListLink to="/blogs">Blogs</ListLink>
-            
+            <ListLink to="/buy">Buy</ListLink>
+            <ListLink to="/rent">Rent</ListLink>
+            <ListLink to="/explores">Explores </ListLink>
+            <ListLink to="/newHomes">New Homes</ListLink>
+            <ListLink to="/blogs">Blogs</ListLink>
           </List>
         </Container>
       )}

@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   margin-top: 6rem;
   width: 80%;
   margin: auto;
+  text-align: center;
 `;
 const Heading = styled.h1`
   font-size: 3.4rem;
@@ -48,6 +49,7 @@ const Pan = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 25rem));
   gap: 2rem;
+  justify-content: center;
 `;
 
 export const PaginateWrapper = styled.div`

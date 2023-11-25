@@ -6,7 +6,7 @@ const Container = styled.div`
   height: 7rem;
   width: 100%;
   padding: 2rem 10rem;
-  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.01);
   background-color: #fff;
   // margin-top: 6rem;
   display: flex;
@@ -46,7 +46,7 @@ const Button = styled.button`
   }
   @media (max-width: 500px) {
     font-size: 1.4rem;
-    padding: 0.5rem 1rem;
+    padding: 0.7rem 1.4rem;
   }
 `;
 export default function PropertyFilter({ filterProp, setFilterProp }) {

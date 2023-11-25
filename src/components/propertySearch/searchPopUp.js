@@ -106,8 +106,11 @@ const BackButton = styled.button`
   border: none;
   cursor: pointer;
   position: absolute;
-  top: 1.2rem;
-  left: 3rem;
+  top: 2rem;
+  left: 2rem;
+  color: #999;
+  font-size: 16px;
+  font-weight: 700;
   background: transparent;
   img {
     height: 2rem;
@@ -137,7 +140,8 @@ export default function SearchPopUp({ setSearchData, setShowPopUp }) {
       <Container>
         {isMobile && (
           <BackButton onClick={() => setShowPopUp(false)}>
-            <Icon src={backIconUrl} alt="back-icon"></Icon>
+            {/* <Icon src={backIconUrl} alt="back-icon"></Icon> */}
+            &#10005;
           </BackButton>
         )}
         <Top>

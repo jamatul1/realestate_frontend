@@ -15,7 +15,7 @@ const Text = styled.h3`
   color: ${(props) => props.theme.color.grayDark};
   margin: 0;
   @media (max-width: 500px) {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 `;
 const Circle = styled.span`
@@ -44,7 +44,7 @@ export default function Logo() {
     <Pan>
       <HomeLink to="/">
         <Circle>
-          <HomeIcon height="1.4rem" width="1.4rem" />
+          <HomeIcon height="1.5rem" width="1.5rem" />
         </Circle>
         <Text>realstateBd.com</Text>
       </HomeLink>

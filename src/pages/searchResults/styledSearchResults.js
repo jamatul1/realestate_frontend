@@ -20,6 +20,7 @@ export const Heading = styled.h1`
   margin: 0;
   margin-top: 0.5rem;
   line-height: 1.2;
+  padding: 0 1rem;
   @media (max-width: 500px) {
     font-size: 2.2rem;
   }
@@ -42,7 +43,7 @@ export const ProductsWrapper = styled.div`
     justify-content: center;
   }
   @media (max-width: 500px) {
-    padding: 2rem 1rem;
+    padding: 2rem 0.5rem;
     justify-content: center;
   }
 `;

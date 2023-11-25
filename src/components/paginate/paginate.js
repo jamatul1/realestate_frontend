@@ -10,6 +10,7 @@ const Button = styled.button`
   border: 1px solid ${(props) => props.theme.color.whiteDark};
   border-radius: 0.5rem;
   cursor: pointer;
+  margin-right: 0.5rem;
   transition: all 0.1s linear;
 `;
 

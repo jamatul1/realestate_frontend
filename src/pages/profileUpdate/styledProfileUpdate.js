@@ -33,8 +33,8 @@ export const Heading = styled.h1`
   }
 `;
 export const AgentWrapper = styled.div`
-  width: 30%;
-  height: 15rem;
+  width: 14rem;
+  height: 12rem;
   background-color: #eff0f4;
   border-radius: 1rem;
   position: relative;

@@ -6,7 +6,7 @@ export const Container = styled.div`
   border-radius: 1rem;
   overflow: hidden;
   @media (max-width: 768px) {
-    width: 80%;
+    width: 90%;
   }
   @media (max-width: 400px) {
     width: 95%;
@@ -19,10 +19,10 @@ export const Top = styled.div`
   border-bottom: 0.2rem solid ${(props) => props.theme.color.whiteDark};
 `;
 export const Bottom = styled.div`
-  padding: 0.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-right: 02rem;
 `;
 
 export const TopButton = styled.button`
@@ -30,7 +30,7 @@ export const TopButton = styled.button`
   color: ${(props) => props.theme.color.grayDark};
   font-weight: 500;
   font-size: 1.6rem;
-  padding: 1rem 7rem;
+  padding: 1.5rem 7rem;
   border-radius: 0.3rem;
   border: none;
   cursor: pointer;
@@ -38,8 +38,8 @@ export const TopButton = styled.button`
   ${(props) => (props.active ? `border-bottom: 3px solid #e4002b;` : "")}
   transition: all 0.1s ease-in;
   @media (max-width: 500px) {
-    font-size: 1.3rem;
-    padding: 1rem 3rem;
+    font-size: 1.5rem;
+    padding: 1.2rem 6rem;
   }
 `;
 export const SearchButton = styled.button`
@@ -51,9 +51,9 @@ export const SearchButton = styled.button`
   border-radius: 2rem;
   cursor: pointer;
   @media (max-width: 500px) {
-    font-size: 1.3rem;
-    height: 3rem;
-    padding: 0.4rem 1rem;
+    font-size: 1.5rem;
+    height: 3.5rem;
+    padding: 0.4rem 1.5rem;
   }
 `;
 export const BottomButton = styled.button`
@@ -74,8 +74,8 @@ export const BottomButton = styled.button`
     background-color: #f4f4f4;
   }
   @media (max-width: 500px) {
-    padding: 0.3rem;
-    font-size: 1.5rem;
+    padding: 1.2rem;
+    font-size: 1.6rem;
   }
 `;
 export const Icon = styled.img``;

@@ -32,6 +32,10 @@ const HeadingPrimary = styled.h1`
   line-height: 1.2;
   color: var(--grayDark);
   margin-bottom: 2rem;
+  @media (max-width: 800px) {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
 `;
 const HeadingSecondary = styled.h2`
   font-size: 2.4rem;
@@ -52,7 +56,7 @@ const SectionTop = styled.section`
     padding-top: 0;
   }
   @media (max-width: 800px) {
-    width: 100%;
+    max-width: 92%;
   }
 `;
 const TopLeft = styled.div`
@@ -61,6 +65,11 @@ const TopLeft = styled.div`
   padding: 5rem 0;
   @media (max-width: 1105px) {
     width: 100%;
+    padding: 3rem 0;
+  }
+  @media (max-width: 705px) {
+    width: 100%;
+    padding: 1rem 0;
   }
 `;
 const TopRight = styled.div`
@@ -254,7 +263,7 @@ const FeatureIcon = styled.img`
 const EditButton = styled.button`
   position: absolute;
   top: 10rem;
-  right: 14.3rem;
+  right: 6.3rem;
   cursor: pointer;
   border: none;
   img {

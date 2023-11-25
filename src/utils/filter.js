@@ -1,20 +1,28 @@
 export function getFilteredArray(array, filterProp) {
   //filterProp - keys = propertyType,price,beds
   //values = propertyType = 'all,house' price= {min: 0, max: 100} beds= {min: 0, max: 100}
+
   let filteredArray = [];
   let shouldIncluded = false;
+
   for (let i = 0; i < array.length; i++) {
     if (filterProp.propertyTypes) {
       let propertyTypes = filterProp.propertyTypes.split(",");
-      if (propertyTypes.includes("all")) {
+      if (
+        propertyTypes.includes("all") ||
+        propertyTypes.includes(array[i].type)
+      ) {
         shouldIncluded = true;
-      } else {
-        propertyTypes.forEach((pT) => {
-          if (array[i].type === pT) {
-            shouldIncluded = true;
-          }
-        });
       }
+      // } else {
+      //   propertyTypes.forEach((pT) => {
+      //     console.log()
+      //     if (array[i].type === pT) {
+      //       console.log("propertytype", propertyTypes);
+      //       shouldIncluded = true;
+      //     }
+      //   });
+      // }
     }
     if (filterProp.propertyTypes && !shouldIncluded) continue;
     if (filterProp.price) {

@@ -24,7 +24,9 @@ export const Frame = styled.div`
   border-radius: 1rem;
   transform: translateY(-5rem);
   @media (max-width: 500px) {
-    width: 30rem;
+    @media (max-width: 500px) {
+      width: 96%;
+    }
   }
 `;
 export const Heading = styled.h1`

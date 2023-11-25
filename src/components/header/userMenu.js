@@ -17,8 +17,12 @@ const SignInButton = styled(Link)`
     background-color: ${(props) => props.theme.color.gray};
   }
   @media (max-width: 500px) {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     padding: 0.5rem 1rem;
+  }
+  @media (max-width: 500px) {
+    font-size: 1.6rem;
+    background: transparent;
   }
 `;
 const JoinButton = styled(Link)`
@@ -36,6 +40,12 @@ const JoinButton = styled(Link)`
   @media (max-width: 500px) {
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
+  }
+  @media (max-width: 500px) {
+    font-size: 1.5rem;
+    background: transparent;
+    color: #111;
+    margin-left: 0rem;
   }
 `;
 const Wrapper = styled.div``;

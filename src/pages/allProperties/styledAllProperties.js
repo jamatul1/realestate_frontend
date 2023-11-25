@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-min-height:100vh;`;
+  min-height: 100vh;
+`;
 export const Pan = styled.div`
   margin-top: 6rem;
   display: flex;
@@ -22,6 +23,9 @@ export const Frame = styled.div`
   }
 `;
 export const Heading = styled.h1`
+  span {
+    font-size: 1.2rem;
+  }
   font-size: 2.8rem;
   padding-bottom: 1rem;
   padding-left: 13rem;
@@ -35,7 +39,7 @@ export const Heading = styled.h1`
   @media (max-width: 800px) {
     text-align: center;
     padding-bottom: 0;
-    padding-left: 0;
+    padding-left: 2rem;
   }
   @media (max-width: 500px) {
     font-size: 2.2rem;
@@ -70,15 +74,15 @@ export const ProductsWrapper = styled.div`
   }
 `;
 export const SortWrapper = styled.div`
-  position: absolute;
-  top: 17rem;
-  right: 2rem;
-  @media (max-width: 700px) {
-    top: 16rem;
-  }
-  @media (max-width: 500px) {
-    top: 13rem;
-  }
+  // position: absolute;
+  // top: 17rem;
+  // right: 2rem;
+  // @media (max-width: 700px) {
+  //   top: 16rem;
+  // }
+  // @media (max-width: 500px) {
+  //   top: 13rem;
+  // }
 `;
 
 export const PaginateWrapper = styled.div`

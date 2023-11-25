@@ -31,8 +31,8 @@ const Container = styled.div`
 `;
 const Wrapper = styled.div``;
 const Avatar = styled.img`
-  width: 10rem;
-  height: 10rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: 100%;
   object-fit: cover;
 `;

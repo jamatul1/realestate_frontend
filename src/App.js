@@ -37,8 +37,16 @@ function App() {
         <Route path="/" element={<Home />} exact />
         <Route path="/buy" element={<Home />} exact />
         <Route path="/rent" element={<Home isBuy={false} />} exact />
-        <Route path="/newHomes" element={<NewHomes />} exact />
-        <Route path="/explores" element={<AllProperties />} exact />
+        <Route
+          path="/newHomes"
+          element={<AllProperties key={"newHomes"} />}
+          exact
+        />
+        <Route
+          path="/explores"
+          element={<AllProperties key={"allDefault"} sorted="price" />}
+          exact
+        />
         <Route path="/blogs" element={<Blogs />} exact />
         <Route
           path="/property/:propertyId"

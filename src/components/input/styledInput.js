@@ -5,6 +5,6 @@ export const Input = styled.input`
   height: 5rem;
   padding: 0 1rem;
   border: 1px solid ${(props) => props.theme.color.gray};
-  border-radius: ${(props) => (props.square ? ".2rem" : "1rem")};
+  border-radius: ${(props) => (props.square ? ".7rem" : "1rem")};
   font-size: inherit;
 `;

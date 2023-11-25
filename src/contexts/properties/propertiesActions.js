@@ -45,12 +45,15 @@ export const updateProperty = async (propertyId, property) => {
   return await response;
 };
 
-export const getAllProperties = async () => {
-  let response = propertyInstance.get("/?sort=createdAt", {
-    headers: {
-      Accept: "application/json",
-    },
-  });
+export const getAllProperties = async (sorted = "createdAt") => {
+  let response = propertyInstance.get(
+    `/?sort=${sorted}&fields=_id,type,images,forSale,forRent,name,location.address,location.description,beds,area,price,-owner`,
+    {
+      headers: {
+        Accept: "application/json",
+      },
+    }
+  );
   return await response;
 };
 

@@ -18,16 +18,19 @@ const Container = styled.div`
     height: 70vh;
   }
   @media (max-width: 1000px) {
-    height: 60vh;
+    height: 70vh;
   }
   @media (max-width: 800px) {
-    height: 50vh;
+    height: 85vh;
+    padding-top: 10rem;
   }
   @media (max-width: 500px) {
-    height: 45vh;
+    height: 85vh;
+    margin: 0 0.5rem;
+    padding-top: 10rem;
   }
-  @media (max-width: 380px) {
-    height: 35vh;
+  @media (max-width: 395px) {
+    margin: 0 0.5rem;
   }
 `;
 export default function ShowCase({ children, ...props }) {

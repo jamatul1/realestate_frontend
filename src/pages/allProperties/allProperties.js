@@ -22,20 +22,22 @@ import Sort from "../../components/sort/sort";
 import sortItems from "../../utils/sort";
 export default function AllProperties({
   title = "Explore all our Properties",
+  sorted = "createdAt",
 }) {
   let [properties, setProperties] = useState([]);
   let [loading, setLoading] = useState(true);
   let [error, setError] = useState("");
   let [currentPage, setCurrentPage] = useState(1);
-  let [pageItemsSize, setPageItemsSize] = useState(6);
-  let [filterProp, setFilterProp] = useState({ propertyTypes: "all" });
+  let [pageItemsSize, setPageItemsSize] = useState(8);
+  let [filterProp, setFilterProp] = useState({
+    propertyTypes: "all",
+  });
   let [sortProp, setSortProp] = useState({ field: "", order: "asc" });
-
   let productsRef = useRef();
   useEffect(() => {
     async function fetchProperties() {
       try {
-        let { data } = await getAllProperties();
+        let { data } = await getAllProperties(sorted);
         setProperties(data.data.data);
         setLoading(false);
         setError("");
@@ -46,6 +48,15 @@ export default function AllProperties({
     }
     fetchProperties();
   }, []);
+  let proccessedProperties = paginate(
+    currentPage,
+    pageItemsSize,
+    sortItems(
+      sortProp.field,
+      sortProp.order,
+      getFilteredArray(properties, filterProp)
+    )
+  );
 
   return (
     <Container>
@@ -57,30 +68,40 @@ export default function AllProperties({
           {error && <ErrorMessage>{error}</ErrorMessage>}
         </Pan>
       )}
-      {properties.length === 0 && <ErrorMessage style={{marginTop:400}}>There is no property!</ErrorMessage>}
-     {properties.length &&  (
-      <Frame ref={productsRef}>
-        <Heading>{title}</Heading>
-        <SortWrapper>
-          <Sort setSortProp={setSortProp} />
-        </SortWrapper>
-        {properties.length > 0 && (
-          <ProductsWrapper>
-            {paginate(
-              currentPage,
-              pageItemsSize,
-              sortItems(
-                sortProp.field,
-                sortProp.order,
-                getFilteredArray(properties, filterProp)
-              )
-            ).map((p, i) => (
-              <ProductCard key={i} product={p} />
-            ))}
-          </ProductsWrapper>
-        )}
-      </Frame>
+      {properties.length === 0 && !loading && (
+        <ErrorMessage style={{ marginTop: 400 }}>
+          There is no property!
+        </ErrorMessage>
       )}
+
+      {properties.length && (
+        <Frame ref={productsRef}>
+          <Heading>
+            {title}{" "}
+            {shouldViewFilterData(filterProp) && (
+              <span>- filter:{JSON.stringify(filterProp)}</span>
+            )}
+          </Heading>
+          <SortWrapper>
+            <Sort setSortProp={setSortProp} />
+          </SortWrapper>
+          {properties.length > 0 && (
+            <ProductsWrapper>
+              {proccessedProperties.map((p, i) => (
+                <ProductCard key={i} product={p} />
+              ))}
+            </ProductsWrapper>
+          )}
+          {properties.length > 0 &&
+            !loading &&
+            proccessedProperties.length === 0 && (
+              <ErrorMessage style={{ marginTop: 0 }}>
+                There is no property for this filter!
+              </ErrorMessage>
+            )}
+        </Frame>
+      )}
+
       <PaginateWrapper>
         <Paginate
           total={getTotalPagesSize(
@@ -95,4 +116,14 @@ export default function AllProperties({
       <Footer />
     </Container>
   );
+}
+export function shouldViewFilterData(filterProp) {
+  let keys = Object.keys(filterProp);
+  if (
+    keys.length === 1 &&
+    keys[0] === "propertyTypes" &&
+    filterProp[keys[0]] === "all"
+  )
+    return false;
+  return true;
 }

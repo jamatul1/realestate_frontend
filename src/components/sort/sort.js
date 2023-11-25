@@ -5,9 +5,10 @@ const Label = styled.label`
   font-weight: 500;
 `;
 const Select = styled.select`
-  font-size: 1.2rem;
-  border: 1px solid var(--gray);
-  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  border: none;
+  // border: 1px solid var(--gray);
+  // border-radius: 0.3rem;
   cursor: pointer;
 `;
 const Option = styled.option``;

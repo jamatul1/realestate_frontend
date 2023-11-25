@@ -21,6 +21,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 import { useProperty } from "../../contexts/properties/propertiesContext";
 import notFoundImgUrl from "../../assets/images/notfound.jpg";
 import Footer from "../../components/footer/footer";
+import { shouldViewFilterData } from "../allProperties/allProperties";
 export default function SearchResults() {
   let [properties, setProperties] = useState([]);
   let [place, setPlace] = useState("");
@@ -32,7 +33,15 @@ export default function SearchResults() {
 
   // For the animation of the changed page after clicked on the pagination button
   let productsRef = useRef();
-
+  let proccessedProperties = paginate(
+    currentPage,
+    pageItemsSize,
+    sortItems(
+      sortProp.field,
+      sortProp.order,
+      getFilteredArray(properties, filterProp)
+    )
+  );
   const { searchResults, resultsPlace } = useProperty();
   useEffect(() => {
     setProperties(searchResults);
@@ -51,27 +60,30 @@ export default function SearchResults() {
       {properties.length > 0 && (
         <Frame>
           <Heading>
-            Total {properties.length} Properites are Available in {place}
+            Total {properties.length} Properites are Available in {place}{" "}
+            <br></br>
+            {shouldViewFilterData(filterProp) && (
+              <span>- filter:{JSON.stringify(filterProp)}</span>
+            )}
           </Heading>
           <SortWrapper>
             <Sort setSortProp={setSortProp} />
           </SortWrapper>
-          {properties.length > 0 && (
+          {proccessedProperties.length > 0 && (
             <ProductsWrapper ref={productsRef}>
-              {paginate(
-                currentPage,
-                pageItemsSize,
-                sortItems(
-                  sortProp.field,
-                  sortProp.order,
-                  getFilteredArray(properties, filterProp)
-                )
-              ).map((p, i) => (
+              {proccessedProperties.map((p, i) => (
                 <ProductCard key={i} product={p} />
               ))}
             </ProductsWrapper>
           )}
         </Frame>
+      )}
+      {proccessedProperties.length === 0 && properties.length > 0 && (
+        <Pan>
+          <Heading style={{ width: "60%", margin: "0 auto" }}>
+            There is no properties for this filter!
+          </Heading>
+        </Pan>
       )}
       {properties.length === 0 && (
         <Pan>

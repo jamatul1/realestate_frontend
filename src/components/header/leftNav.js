@@ -39,8 +39,9 @@ const LeftBackground = styled.div`
   left: 0;
   z-index: 400000;
   overflowy: hidden;
+  transition: all 0.3s;
   @media (max-width: 800px) {
-    width: 50vw;
+    width: 100vw;
   }
   @media (max-width: 400px) {
     width: 100vw;
@@ -53,12 +54,14 @@ const LeftMenu = styled.ul`
   z-index: 400000;
   padding: 3rem 3rem;
   width: 40vw;
+  transition: all 0.3s;
   @media (max-width: 800px) {
-    width: 50vw;
+    top: 12rem;
+    width: 100vw;
+    text-align: center;
   }
   @media (max-width: 400px) {
     width: 100vw;
-    text-align: center;
   }
 `;
 const LeftMenuItem = styled.li`
@@ -72,6 +75,13 @@ const LeftMenuLink = styled(Link)`
   font-size: 1.6rem;
 `;
 
+const CrossBtn = styled.button`
+  border: none;
+  background: white;
+  font-size: 2rem;
+  font-weight: 700;
+`;
+
 export default function LeftNav() {
   let [showMenu, setShowMenu] = useState(false);
   let toggleShowMenu = (e) => {
@@ -82,7 +92,7 @@ export default function LeftNav() {
     <Container>
       <MenuIconWrapper>
         <MenuIconBtn onClick={toggleShowMenu}>
-          {showMenu && <MenuIcon src={crossIconUrl} alt="" />}
+          {showMenu && <CrossBtn> &#10005;</CrossBtn>}
           {!showMenu && <MenuIcon src={menuIconUrl} alt="" />}
         </MenuIconBtn>
       </MenuIconWrapper>
@@ -91,19 +101,41 @@ export default function LeftNav() {
       {showMenu && (
         <LeftMenu>
           <LeftMenuItem>
-            <LeftMenuLink to="/buy">Buy</LeftMenuLink>
+            <LeftMenuLink onClick={() => showMenu((state) => !state)} to="/buy">
+              Buy
+            </LeftMenuLink>
           </LeftMenuItem>
           <LeftMenuItem>
-            <LeftMenuLink to="/rent">Rent</LeftMenuLink>
+            <LeftMenuLink
+              onClick={() => showMenu((state) => !state)}
+              to="/rent"
+            >
+              Rent
+            </LeftMenuLink>
           </LeftMenuItem>
           <LeftMenuItem>
-            <LeftMenuLink to="/explores">Explores</LeftMenuLink>
+            <LeftMenuLink
+              onClick={() => showMenu((state) => !state)}
+              to="/explores"
+            >
+              Explores
+            </LeftMenuLink>
           </LeftMenuItem>
           <LeftMenuItem>
-            <LeftMenuLink to="/newHomes">New Homes</LeftMenuLink>
+            <LeftMenuLink
+              onClick={() => showMenu((state) => !state)}
+              to="/newHomes"
+            >
+              New Homes
+            </LeftMenuLink>
           </LeftMenuItem>
           <LeftMenuItem>
-            <LeftMenuLink to="/blogs">Blogs</LeftMenuLink>
+            <LeftMenuLink
+              onClick={() => showMenu((state) => !state)}
+              to="/blogs"
+            >
+              Blogs
+            </LeftMenuLink>
           </LeftMenuItem>
         </LeftMenu>
       )}

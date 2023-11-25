@@ -49,7 +49,6 @@ const Wrapper = styled.div`
     top: 2.5rem;
     left: 50%;
     transform: translate(-50%, 0);
-    width: 90%;
   }
 `;
 const Heading = styled.h1`
