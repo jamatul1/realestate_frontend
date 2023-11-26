@@ -35,8 +35,8 @@ the application is built with a responsive design to ensure a consistent and use
 
 ## Tech Stack
 
-**Client:** React, React Context, Styled-Components, Formik, Pigeon Map
-**Server:** Node, Express MongoDB Mongoose Cloudinary JWT Auth 
+`Client:` React, React Context, Styled-Components, Formik, Pigeon Map
+`Server:` Node, Express MongoDB Mongoose Cloudinary JWT Auth 
 
 
 
