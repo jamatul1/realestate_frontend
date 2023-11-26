@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styled from "styled-components";
 import searchUrl from "../../assets/icons/search.png";
 import { callAutoComplete } from "../../contexts/properties/propertiesActions";
@@ -116,11 +116,16 @@ const BackButton = styled.button`
     height: 2rem;
   }
 `;
-
+function getInitialValues() {
+  let initializedSuggetions = localStorage.getItem("real_state_autosuggestions")
+    ? JSON.parse(localStorage.getItem("real_state_autosuggestions"))
+    : [];
+  initializedSuggetions.reverse();
+  return initializedSuggetions;
+}
 export default function SearchPopUp({ setSearchData, setShowPopUp }) {
-  let [suggestions, setSuggestions] = useState([]);
+  let [suggestions, setSuggestions] = useState(getInitialValues());
   const [text, setText] = useState("");
-
   const isMobile = useMediaQuery({
     query: "(max-width: 500px)",
   });
@@ -131,6 +136,7 @@ export default function SearchPopUp({ setSearchData, setShowPopUp }) {
     }),
     []
   );
+  console.log(suggestions);
   const onChangeInput = (e) => {
     setText(e.target.value);
     throttleSuggestions(e.target.value);

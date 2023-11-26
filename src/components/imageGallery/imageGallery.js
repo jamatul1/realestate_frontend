@@ -11,7 +11,12 @@ const Container = styled.div`
   z-index: 3000;
 `;
 const Image = styled.img`
-  width: 100%;
+  width: 80vw;
+  object-fit: cover;
+  height: 80vh;
+  @media (max-width: 500px) {
+    height: 60vh;
+  }
 `;
 const Button = styled.button`
   font-size: 12rem;
@@ -38,14 +43,14 @@ const ExitButton = styled.button`
 `;
 const ContentWrapper = styled.div`
   position: relative;
-  width: 60%;
+  // width: 60%;
   margin: auto;
   margin-top: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  @media (max-width: 800px) {
-    margin-top: 15rem;
+  @media (max-width: 500px) {
+    margin-top: 10rem;
   }
 `;
 const CurrentLabel = styled.p`
@@ -79,9 +84,13 @@ export default function ImageGallery({ start = 0, images, setShowImgPreview }) {
       <CurrentLabel>{`${index + 1}/${images.length}`}</CurrentLabel>
       <ExitButton onClick={() => setShowImgPreview(false)}>╳</ExitButton>
       <ContentWrapper>
-        <Button onClick={() => handleButtons("prev")}>{"<"}</Button>
+        {images.length > 1 && (
+          <Button onClick={() => handleButtons("prev")}>{"<"}</Button>
+        )}
         <Image src={images[index]} alt="imgs" />
-        <Button onClick={() => handleButtons("next")}>{">"}</Button>
+        {images.length > 1 && (
+          <Button onClick={() => handleButtons("next")}>{">"}</Button>
+        )}
       </ContentWrapper>
     </Container>
   );

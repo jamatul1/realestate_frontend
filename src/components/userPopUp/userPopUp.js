@@ -72,7 +72,7 @@ export default function UserPopUp({ setUserPopUp }) {
       localStorage.removeItem("real_state-user");
       localStorage.removeItem("real_state-token");
       dispatch({ type: "SIGN_OUT" });
-      navigateTo("/auth/signin");
+      navigateTo("/");
     } catch (error) {
       setError("Failed to sign out.");
       setTimeout(() => {

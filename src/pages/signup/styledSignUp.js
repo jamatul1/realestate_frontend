@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import bgImgUrl from "../.././assets/images/cover_signin.jpg";
+import bgImgUrl from "../.././assets/images/cover_signup.jpg";
 
 export const Container = styled.div`
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
   background-color: ${(props) => props.theme.color.whiteDark};
   background: url(${bgImgUrl});
   background-size: 100%;

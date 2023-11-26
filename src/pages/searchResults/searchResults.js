@@ -21,7 +21,10 @@ import MoonLoader from "react-spinners/MoonLoader";
 import { useProperty } from "../../contexts/properties/propertiesContext";
 import notFoundImgUrl from "../../assets/images/notfound.jpg";
 import Footer from "../../components/footer/footer";
-import { shouldViewFilterData } from "../allProperties/allProperties";
+import {
+  formateFilterSetting,
+  shouldViewFilterData,
+} from "../allProperties/allProperties";
 export default function SearchResults() {
   let [properties, setProperties] = useState([]);
   let [place, setPlace] = useState("");
@@ -51,7 +54,9 @@ export default function SearchResults() {
   return (
     <Container>
       <Header />
-      <PropertyFilter filterProp={filterProp} setFilterProp={setFilterProp} />
+      {searchResults.length > 1 && (
+        <PropertyFilter filterProp={filterProp} setFilterProp={setFilterProp} />
+      )}
       {loading && (
         <Pan>
           <MoonLoader loading={loading} color="red" size={40} />
@@ -60,15 +65,19 @@ export default function SearchResults() {
       {properties.length > 0 && (
         <Frame>
           <Heading>
-            Total {properties.length} Properites are Available in {place}{" "}
+            Total {properties.length} Properites are available around ,{place}{" "}
             <br></br>
             {shouldViewFilterData(filterProp) && (
-              <span>- filter:{JSON.stringify(filterProp)}</span>
+              <span style={{ fontSize: "16px" }}>
+                Filter Setting - {formateFilterSetting(filterProp)}
+              </span>
             )}
           </Heading>
-          <SortWrapper>
-            <Sort setSortProp={setSortProp} />
-          </SortWrapper>
+          {proccessedProperties.length > 1 && (
+            <SortWrapper>
+              <Sort setSortProp={setSortProp} />
+            </SortWrapper>
+          )}
           {proccessedProperties.length > 0 && (
             <ProductsWrapper ref={productsRef}>
               {proccessedProperties.map((p, i) => (
@@ -80,15 +89,15 @@ export default function SearchResults() {
       )}
       {proccessedProperties.length === 0 && properties.length > 0 && (
         <Pan>
-          <Heading style={{ width: "60%", margin: "0 auto" }}>
+          <Heading style={{ width: "60%", margin: "0 auto 0 auto" }}>
             There is no properties for this filter!
           </Heading>
         </Pan>
       )}
       {properties.length === 0 && (
         <Pan>
-          <Heading style={{ width: "60%", margin: "0 auto" }}>
-            No properties found in area, {place}
+          <Heading style={{ width: "60%", margin: "15rem auto 0 auto" }}>
+            No properties found around area, {place}
           </Heading>
           <NotFoundImage src={notFoundImgUrl} alt="not found" />
         </Pan>

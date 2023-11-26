@@ -79,12 +79,14 @@ export default function AllProperties({
           <Heading>
             {title}{" "}
             {shouldViewFilterData(filterProp) && (
-              <span>- filter:{JSON.stringify(filterProp)}</span>
+              <span> Filter Setting - {formateFilterSetting(filterProp)}</span>
             )}
           </Heading>
-          <SortWrapper>
-            <Sort setSortProp={setSortProp} />
-          </SortWrapper>
+          {proccessedProperties.length > 1 && (
+            <SortWrapper>
+              <Sort setSortProp={setSortProp} />
+            </SortWrapper>
+          )}
           {properties.length > 0 && (
             <ProductsWrapper>
               {proccessedProperties.map((p, i) => (
@@ -126,4 +128,24 @@ export function shouldViewFilterData(filterProp) {
   )
     return false;
   return true;
+}
+
+export function formateFilterSetting(propObj) {
+  let formatString = "";
+  for (let [key, value] of Object.entries(propObj)) {
+    if (key === "propertyTypes") {
+      formatString += "Property Types : ";
+      let values = value
+        .split(",")
+        .map((val) => val[0].toUpperCase() + val.slice(1));
+      values = values.join(" ");
+      formatString += values;
+    } else {
+      formatString += key[0].toUpperCase() + key.slice(1) + ": ";
+      formatString +=
+        "Minimum - " + value?.min + " and " + "Maximum - " + value?.max;
+    }
+    formatString += ", ";
+  }
+  return formatString;
 }

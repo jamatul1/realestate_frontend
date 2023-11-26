@@ -36,6 +36,8 @@ export default function SignUp() {
     initialValues: {
       email: "",
       password: "",
+      name: "",
+      phone: "",
     },
     validationSchema: Yup.object({
       email: Yup.string()
@@ -44,10 +46,15 @@ export default function SignUp() {
       password: Yup.string()
         .required("`Password` is required !")
         .min(8, "`Password` is too short - should be 8 chars minimum !"),
+      name: Yup.string()
+        .required("`Name` is required !")
+        .min(6, "`Name` is too short - should be 6 chars minimum !"),
+      phone: Yup.string()
+        .required("`Phone Number` is required !")
+        .min(8, "`Phone Number` is too short - should be 8 chars minimum !"),
     }),
     onSubmit: async (values) => {
       setLoading(true);
-
       try {
         let response = await signUpUser(values);
         if (response.status === "success") {
@@ -80,17 +87,36 @@ export default function SignUp() {
         <Heading>Create account</Heading>
         <Form onSubmit={formik.handleSubmit}>
           <FormInput
+            type="name"
+            required
+            placeholder="Name :"
+            {...formik.getFieldProps("name")}
+          />
+          {formik.touched.name && formik.errors.name ? (
+            <ErrorMessage>{formik.errors.name}</ErrorMessage>
+          ) : null}
+          <FormInput
             type="email"
             required
-            placeholder="Email address"
+            placeholder="Email :"
             {...formik.getFieldProps("email")}
           />
           {formik.touched.email && formik.errors.email ? (
             <ErrorMessage>{formik.errors.email}</ErrorMessage>
           ) : null}
+
+          <FormInput
+            type="phone"
+            required
+            placeholder="Phone Number :"
+            {...formik.getFieldProps("phone")}
+          />
+          {formik.touched.phone && formik.errors.phone ? (
+            <ErrorMessage>{formik.errors.phone}</ErrorMessage>
+          ) : null}
           <FormInput
             type="password"
-            placeholder="Passwrod"
+            placeholder="Password :"
             required
             {...formik.getFieldProps("password")}
           />

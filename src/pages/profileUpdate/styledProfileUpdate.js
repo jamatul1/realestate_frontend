@@ -33,8 +33,8 @@ export const Heading = styled.h1`
   }
 `;
 export const AgentWrapper = styled.div`
-  width: 14rem;
-  height: 12rem;
+  width: 20rem;
+  height: 20rem;
   background-color: #eff0f4;
   border-radius: 1rem;
   position: relative;
@@ -45,7 +45,7 @@ export const AgentWrapper = styled.div`
   margin-top: 2rem;
   cursor: pointer;
   @media (max-width: 500px) {
-    width: 45%;
+    width: 16rem;
   }
 `;
 export const Triangle = styled.div`
@@ -57,6 +57,7 @@ export const Triangle = styled.div`
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 11;
   img {
     width: 2.5rem;
     position: absolute;
@@ -75,8 +76,14 @@ export const AgentLabel = styled.h3`
 export const AgentAvatar = styled.img`
   width: 10rem;
   height: 10rem;
+  pointer-events: none;
 `;
-
+export const AgentSub = styled.p`
+  font-size: 1.4rem;
+  line-height: 1;
+  padding-top: 5px;
+  margin-right: 0.5rem;
+`;
 export const SubHeading = styled.h2`
   font-size: 2.4rem;
   font-weight: 400;

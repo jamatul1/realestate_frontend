@@ -67,6 +67,23 @@ export default function PropertySearch({ isBuy = true }) {
         searchData.lon
       );
       let filtered = filterResults(data.data.data);
+      // adding this for recent autosuggestions
+      let suggestions = JSON.parse(
+        localStorage.getItem("real_state_autosuggestions")
+          ? localStorage.getItem("real_state_autosuggestions")
+          : "[]"
+      );
+      let index = suggestions.findIndex(
+        (val, i) => val.lat === searchData.lat && val.lon === searchData.lon
+      );
+      if (index !== -1) suggestions.splice(index, 1);
+      suggestions.push(searchData);
+      if (suggestions.length > 5) localStorage.shift();
+      localStorage.setItem(
+        "real_state_autosuggestions",
+        JSON.stringify(suggestions)
+      );
+
       dispatch({
         type: "SEARCH",
         payload: {

@@ -22,6 +22,7 @@ import {
   Label,
   FileInput,
   UploadIcon,
+  AgentSub,
 } from "./styledProfileUpdate";
 import avatarUrl from "../../assets/images/agent.svg";
 import tickUrl from "../../assets/icons/tick.png";
@@ -128,10 +129,11 @@ export default function ProfileUpdate() {
               setAgent((agent) => !agent);
             }}
           >
+            <AgentSub>Click here to change account type</AgentSub>
             <Triangle>{agent && <img alt="agent" src={tickUrl} />}</Triangle>
             <AgentAvatar src={avatarUrl} />
             <AgentLabel clicked={agent ? true : false}>
-              {agent ? "I'm an agent" : "General User"}
+              {agent ? "Agent" : "General User"}
             </AgentLabel>
           </AgentWrapper>
           <SubHeading>Your Details</SubHeading>

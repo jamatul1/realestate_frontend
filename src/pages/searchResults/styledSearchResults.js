@@ -6,7 +6,7 @@ export const Pan = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  height: 90vh;
+  min-height: 50vh;
 `;
 export const Frame = styled.div`
   margin-top: 16rem;

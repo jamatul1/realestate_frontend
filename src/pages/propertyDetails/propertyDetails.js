@@ -95,7 +95,7 @@ const ImageWrapper = styled.div`
 const LargeImg = styled.img`
   cursor: pointer;
   width: 50vw;
-  height: 40vh;
+  height: 45vh;
   object-fit: cover;
   margin-bottom: 0.5rem;
   @media (max-width: 1105px) {
@@ -106,6 +106,7 @@ const Image = styled.img`
   width: 100%;
   object-fit: cover;
   cursor: pointer;
+  height: 45vh;
 `;
 const ImageBox = styled.div`
   cursor: pointer;
@@ -335,7 +336,7 @@ export default function PropertyDetails() {
                       <Icon src={squareUrl} alt="square-icon" />
                       <Text>{property.area}</Text>
                     </SmallBox>
-                    <Text>{property.type}</Text>
+                    <Text>Type: {property.type}</Text>
                   </SmallBoxWrapper>
                   <HeadingSecondary style={{ marginTop: "5rem" }}>
                     {new Intl.NumberFormat("hi-IN", {

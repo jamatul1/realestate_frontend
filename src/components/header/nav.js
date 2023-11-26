@@ -7,7 +7,7 @@ import { useMediaQuery } from "react-responsive";
 const Container = styled.div``;
 const List = styled.ul`
   display: flex;
-  gap: 15px;
+
   list-style: none;
 `;
 const ListItem = styled.li`
@@ -18,7 +18,7 @@ const ListLink = styled(Link)`
   font-size: 1.6rem;
   color: ${(props) => props.theme.color.grayDark};
   font-weight: 500;
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease-out;
   &:hover {

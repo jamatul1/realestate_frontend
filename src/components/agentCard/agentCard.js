@@ -14,6 +14,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  gap: 1rem;
   box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.1);
 `;
 const Avatar = styled.img`
@@ -24,69 +25,39 @@ const Avatar = styled.img`
 `;
 const Text = styled.p`
   color: var(--gray);
-  margin: 1.5rem 0;
+  margin: 0;
 `;
 const Top = styled.div`
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.2rem;
+  flex-direction: column;
 `;
-const Button = styled.button`
+const Button = styled.a`
   background-color: ${(props) => (props.phone ? "#ffffff" : "#00e489")};
   color: ${(props) => (props.phone ? "var(--green)" : "#ffffff")};
   font-weight: 500;
   cursor: pointer;
   border: none;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem;
   border-radius: 1rem;
+  text-decoration: none;
 `;
 const Title = styled.h3`
   color: var(--grayDark);
+  margin: 0;
+  line-height: 1.2;
 `;
 export default function AgentCard({ agent }) {
-  const [showPhone, setShowPhone] = useState(false);
-  const notify = () =>
-    toast(
-      `Agent Phone Number is copied ! 
-                  You can call him for any information!`,
-      {
-        position: "bottom-right",
-        autoClose: 8000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      }
-    );
   return (
     <Container>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <Top>
         <Avatar src={agent.photo} alt="agent-photo"></Avatar>
+        <Title>{agent.name}</Title>
+        <Text>{agent.address}</Text>
       </Top>
-      <Title>{agent.name}</Title>
-      <Text>{agent.address}</Text>
-      <Button
-        phone={showPhone ? true : false}
-        onClick={() => {
-          setShowPhone(true);
-          navigator.clipboard.writeText(agent.phone);
-          notify();
-        }}
-      >
-        {showPhone ? "Phone no: " + agent.phone : "Call Agent"}
-      </Button>
+
+      <Button href={`tel:${agent.phone}`}>Call Agent</Button>
     </Container>
   );
 }
